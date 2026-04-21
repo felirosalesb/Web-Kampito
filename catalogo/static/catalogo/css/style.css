@@ -1,0 +1,56 @@
+/* Paleta de colores El Kampito */
+:root {
+    --azul-lider: #0071ce;
+    --amarillo-lider: #ffc220;
+    --gris-fondo: #f3f3f3;
+    --texto-oscuro: #2e2e2e;
+}
+
+body {
+    background-color: var(--gris-fondo);
+    color: var(--texto-oscuro);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar estilo corporativo */
+.navbar {
+    background-color: var(--azul-lider) !important;
+    border-bottom: 3px solid var(--amarillo-lider);
+}
+
+.navbar-brand {
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+/* Botones estilo Lider */
+.btn-primary {
+    background-color: var(--azul-lider);
+    border: none;
+    border-radius: 20px; /* Bordes redondeados modernos */
+    font-weight: 600;
+}
+
+.btn-success {
+    background-color: var(--amarillo-lider);
+    color: #000;
+    border: none;
+    border-radius: 20px;
+}
+
+.btn-success:hover {
+    background-color: #e5af1d;
+    color: #000;
+}
+
+/* Cards de productos */
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
