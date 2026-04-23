@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from .models import Banner
 
 # Create your views here.
 def index(request):
-    return render(request, 'catalogo/index.html')
+    banners = Banner.objects.filter(activo=True)
+    return render(request, 'catalogo/index.html', {'banners': banners})
