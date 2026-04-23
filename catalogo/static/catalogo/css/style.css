@@ -1,41 +1,125 @@
-/* Paleta de colores El Kampito */
+/* =========================================
+   PALETA DE COLORES Y VARIABLES
+   ========================================= */
 :root {
     --azul-lider: #0071ce;
     --amarillo-lider: #ffc220;
     --gris-fondo: #f3f3f3;
     --texto-oscuro: #2e2e2e;
+    --blanco: #ffffff;
 }
 
+/* =========================================
+   ESTILOS GENERALES
+   ========================================= */
 body {
     background-color: var(--gris-fondo);
     color: var(--texto-oscuro);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    overflow-x: hidden; /* Evita scroll horizontal innecesario */
 }
 
-/* Navbar estilo corporativo */
+/* =========================================
+   NAVBAR (HEADER)
+   ========================================= */
 .navbar {
     background-color: var(--azul-lider) !important;
-    border-bottom: 3px solid var(--amarillo-lider);
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .navbar-brand {
     font-weight: 800;
-    letter-spacing: -1px;
+    letter-spacing: -0.5px;
+    font-size: 1.4rem;
+    color: var(--blanco) !important;
 }
 
-/* Botones estilo Lider */
+/* BARRA DE BÚSQUEDA (Estilo Falabella) */
+.search-group {
+    background-color: var(--blanco);
+    border-radius: 25px; /* Bordes muy redondeados */
+    overflow: hidden;
+    padding: 2px 15px;
+    transition: box-shadow 0.3s ease;
+}
+
+.search-group:focus-within {
+    box-shadow: 0 0 0 3px rgba(255, 194, 32, 0.4); /* Glow amarillo al buscar */
+}
+
+.search-group .form-control {
+    border: none;
+    font-size: 0.95rem;
+    padding: 0.6rem 0.5rem;
+}
+
+.search-group .form-control:focus {
+    box-shadow: none;
+}
+
+.search-group .btn {
+    border: none;
+    background: transparent;
+    color: #757575;
+    padding: 0.5rem;
+}
+
+.search-group .btn:hover {
+    color: var(--azul-lider);
+}
+
+/* =========================================
+   OFFCANVAS (MENÚ MÓVIL)
+   ========================================= */
+.offcanvas {
+    width: 280px !important;
+}
+
+.offcanvas-header {
+    background-color: var(--blanco);
+    border-bottom: 1px solid #dee2e6;
+}
+
+.offcanvas-title {
+    color: var(--azul-lider);
+    font-weight: 700;
+}
+
+.list-group-item {
+    border: none;
+    font-weight: 500;
+    padding: 1rem 1.5rem;
+    transition: background 0.2s;
+}
+
+.list-group-item:hover {
+    background-color: rgba(0, 113, 206, 0.05);
+}
+
+.list-group-item i {
+    color: var(--azul-lider);
+    width: 25px;
+}
+
+/* =========================================
+   COMPONENTES (BOTONES Y CARDS)
+   ========================================= */
 .btn-primary {
     background-color: var(--azul-lider);
     border: none;
-    border-radius: 20px; /* Bordes redondeados modernos */
+    border-radius: 25px;
     font-weight: 600;
+    padding: 0.5rem 1.5rem;
 }
 
 .btn-success {
     background-color: var(--amarillo-lider);
     color: #000;
     border: none;
-    border-radius: 20px;
+    border-radius: 25px;
+    font-weight: 600;
 }
 
 .btn-success:hover {
@@ -43,14 +127,38 @@ body {
     color: #000;
 }
 
-/* Cards de productos */
 .card {
     border: none;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    transition: transform 0.2s;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* =========================================
+   RESPONSIVIDAD (MEDIA QUERIES)
+   ========================================= */
+
+/* Solo para Smartphones */
+@media (max-width: 991px) {
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+    
+    .search-group {
+        margin-top: 5px;
+        border-radius: 10px; /* Un poco menos redondeado en móvil para aprovechar espacio */
+    }
+}
+
+/* Solo para Desktop */
+@media (min-width: 992px) {
+    .navbar-expand-lg .navbar-nav .nav-link {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
 }
