@@ -9,7 +9,7 @@ class Banner(models.Model):
     activo = models.BooleanField(default=True)
     link = models.URLField(blank=True, null=True, help_text="Opcional: link a una categoria o producto")
 
-    def __claro__(self):
+    def __str__(self):
         return self.titulo
     
     class Meta:
