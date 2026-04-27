@@ -7,6 +7,7 @@
     --gris-fondo: #f3f3f3;
     --texto-oscuro: #2e2e2e;
     --blanco: #ffffff;
+    --gris-suave: #757575;
 }
 
 /* =========================================
@@ -15,8 +16,8 @@
 body {
     background-color: var(--gris-fondo);
     color: var(--texto-oscuro);
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    overflow-x: hidden; /* Evita scroll horizontal innecesario */
+    font-family: 'Open Sans', sans-serif;
+    overflow-x: hidden;
 }
 
 /* =========================================
@@ -24,35 +25,31 @@ body {
    ========================================= */
 .navbar {
     background-color: var(--azul-lider) !important;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .navbar-brand {
     font-weight: 800;
-    letter-spacing: -0.5px;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     color: var(--blanco) !important;
 }
 
-/* BARRA DE BÚSQUEDA (Estilo Falabella) */
+/* BARRA DE BÚSQUEDA */
 .search-group {
     background-color: var(--blanco);
-    border-radius: 25px; /* Bordes muy redondeados */
+    border-radius: 25px;
     overflow: hidden;
     padding: 2px 15px;
     transition: box-shadow 0.3s ease;
 }
 
 .search-group:focus-within {
-    box-shadow: 0 0 0 3px rgba(255, 194, 32, 0.4); /* Glow amarillo al buscar */
+    box-shadow: 0 0 0 3px rgba(255, 194, 32, 0.4);
 }
 
 .search-group .form-control {
     border: none;
     font-size: 0.95rem;
-    padding: 0.6rem 0.5rem;
 }
 
 .search-group .form-control:focus {
@@ -62,103 +59,141 @@ body {
 .search-group .btn {
     border: none;
     background: transparent;
-    color: #757575;
-    padding: 0.5rem;
-}
-
-.search-group .btn:hover {
-    color: var(--azul-lider);
+    color: var(--gris-suave);
 }
 
 /* =========================================
-   OFFCANVAS (MENÚ MÓVIL)
+   MODAL SUCURSALES Y OFFCANVAS
    ========================================= */
+.text-primary {
+    color: var(--azul-lider) !important;
+}
+
+.modal-header.bg-primary {
+    background-color: var(--azul-lider) !important;
+}
+
+.list-group-item-action:hover {
+    background-color: rgba(0, 113, 206, 0.05);
+}
+
 .offcanvas {
     width: 280px !important;
 }
 
-.offcanvas-header {
-    background-color: var(--blanco);
-    border-bottom: 1px solid #dee2e6;
+/* =========================================
+   CARRUSEL (Control de altura)
+   ========================================= */
+.carousel-item img {
+    height: 400px; /* Altura en Desktop */
+    object-fit: cover;
+    border-radius: 8px;
 }
 
-.offcanvas-title {
-    color: var(--azul-lider);
-    font-weight: 700;
-}
-
-.list-group-item {
-    border: none;
-    font-weight: 500;
-    padding: 1rem 1.5rem;
-    transition: background 0.2s;
-}
-
-.list-group-item:hover {
-    background-color: rgba(0, 113, 206, 0.05);
-}
-
-.list-group-item i {
-    color: var(--azul-lider);
-    width: 25px;
+@media (max-width: 768px) {
+    .carousel-item img {
+        height: 180px; /* Altura en Móvil */
+    }
 }
 
 /* =========================================
-   COMPONENTES (BOTONES Y CARDS)
+   ESTILOS BUBBLE CATEGORIES (Estilo Lider)
    ========================================= */
-.btn-primary {
-    background-color: var(--azul-lider);
-    border: none;
-    border-radius: 25px;
-    font-weight: 600;
-    padding: 0.5rem 1.5rem;
+.category-scroll {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
+    scrollbar-width: none; /* Oculta scroll en Firefox */
+    -ms-overflow-style: none; /* Oculta scroll en IE */
 }
 
-.btn-success {
-    background-color: var(--amarillo-lider);
-    color: #000;
-    border: none;
-    border-radius: 25px;
-    font-weight: 600;
+.category-scroll::-webkit-scrollbar {
+    display: none; /* Oculta scroll en Chrome/Safari */
 }
 
-.btn-success:hover {
-    background-color: #e5af1d;
-    color: #000;
+.category-item {
+    flex: 0 0 auto;
+    width: 100px;
+    margin-right: 1.5rem; /* Espacio entre burbujas */
 }
 
+.bubble-img {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    background-color: var(--blanco);
+    border: 2px solid transparent;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.bubble-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.category-item:hover .bubble-img {
+    transform: translateY(-5px);
+    border-color: var(--amarillo-lider);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.category-label {
+    color: var(--texto-oscuro);
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: block;
+    margin-top: 10px;
+    line-height: 1.2;
+    text-align: center;
+}
+
+/* =========================================
+   PRODUCT CARDS (Mejora visual)
+   ========================================= */
 .card {
     border: none;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+.card-title {
+    font-size: 0.9rem;
+    font-weight: 600;
 }
 
 /* =========================================
-   RESPONSIVIDAD (MEDIA QUERIES)
+   RESPONSIVIDAD GENERAL
    ========================================= */
-
-/* Solo para Smartphones */
 @media (max-width: 991px) {
     .navbar-brand {
         font-size: 1.2rem;
     }
-    
     .search-group {
-        margin-top: 5px;
-        border-radius: 10px; /* Un poco menos redondeado en móvil para aprovechar espacio */
+        border-radius: 10px;
     }
 }
 
-/* Solo para Desktop */
 @media (min-width: 992px) {
-    .navbar-expand-lg .navbar-nav .nav-link {
-        padding-right: 1rem;
-        padding-left: 1rem;
+    .bubble-img {
+        width: 110px;
+        height: 110px;
+    }
+    .category-item {
+        width: 120px;
+        margin-right: 2.5rem;
+    }
+    .category-label {
+        font-size: 0.9rem;
     }
 }
